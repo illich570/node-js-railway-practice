@@ -28,16 +28,6 @@ const OrderSchema = {
     onUpdate: 'CASCADE',
     onDelete: 'SET NULL'  
   },
-  total: {
-    type: DataTypes.VIRTUAL,
-    get(){
-      if(this.items.length > 0){
-        return this.items.reduce((acc, item) => acc + (item.price * item.OrderProduct.quantity), 0)
-      }else{
-        return 0
-      }
-    }
-  }
 }
 
 class Order extends Model {
